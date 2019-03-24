@@ -21,16 +21,20 @@
                 </div>
             </form>
 
-            <ul class="list-group">
+            <ul class="list-group mt-2">
                 {% for book in books %}
-                    <li class="list-group-item mt-2">
-                        {{ book['title'] }}, (Author: {{ book['author'] }})</li>
+                    <li class="list-group-item">
+                        <a href="{{ url_for('book_details', book_id=book.id) }}"> {{ book.title }}, (Author: {{ book.author }})</a>
+                    </li>
                 {% endfor %}
             </ul>
 
             {% if not books %}
                 <p>No books, try again later</p>
             {% endif %}
+            <div class="mt-2">
+                <a href="{{ url_for('book_edit', book_id='new') }}" class="btn btn-primary">Add New Book</a>
+            </div>
         </div>
     </div>
 </div>
